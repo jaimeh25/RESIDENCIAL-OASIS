@@ -1,32 +1,31 @@
 <template>
   <q-page class="flex flex-center">
-    <img id="Image-Maps-Com-image-maps-2022-05-21-053046" src="~assets/residensialOasis.jpg" border="0" width="419" height="628" orgWidth="419" orgHeight="628" usemap="#image-maps-2022-05-21-053046" alt="" />
-      <map name="image-maps-2022-05-21-053046" id="ImageMapsCom-image-maps-2022-05-21-053046">
-      <area  alt="" title="palapa1" href="http://www.image-maps.com/" shape="rect" coords="248,349,394,382" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapa2" href="http://www.image-maps.com/" shape="rect" coords="248,387,394,422" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapa3" href="http://www.image-maps.com/" shape="rect" coords="249,427,395,462" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapa4" href="http://www.image-maps.com/" shape="rect" coords="249,466,394,498" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapa5" href="http://www.image-maps.com/" shape="rect" coords="250,504,392,542" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapa6" href="http://www.image-maps.com/" shape="rect" coords="252,544,393,578" style="outline:none;" target="_self"     />
-      <area  alt="" title="cancha" href="http://www.image-maps.com/" shape="rect" coords="256,584,389,617" style="outline:none;" target="_self"     />
-      <area shape="rect" coords="417,626,419,628" alt="Image Map" style="outline:none;" title="Image Map"/>
-      <area  alt="" title="palapaImg1" href="http://www.image-maps.com/" shape="poly" coords="96,453,89,450,84,446,80,441,78,434,79,427,81,421,85,415,92,412,99,412,108,415,115,419,119,425,121,433,121,442,119,447,113,451,107,454" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapaImg2" href="http://www.image-maps.com/" shape="poly" coords="100,573,96,573,90,571,86,566,84,561,85,555,88,550,94,546,100,544,107,547,113,553,116,561,114,569,110,572" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapaImg3" href="http://www.image-maps.com/" shape="poly" coords="108,537,108,524,109,523,112,520,117,519,121,524,132,524,132,537" style="outline:none;" target="_self"     />
-      <area  alt="" title="palpaImg4" href="http://www.image-maps.com/" shape="poly" coords="50,503,48,508,43,511,38,510,36,506,36,502,39,498,42,496,45,495,50,500,51,498" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapaImg5" href="http://www.image-maps.com/" shape="poly" coords="148,296,145,290,145,286,148,284,146,280,144,279,139,275,138,271,141,267,147,267,151,272,156,275,159,282,156,284,158,291,155,296" style="outline:none;" target="_self"     />
-      <area  alt="" title="palapaImg6" href="http://www.image-maps.com/" shape="poly" coords="175,220,176,206,205,205,206,219" style="outline:none;" target="_self"     />
-      <area  alt="" title="canchaImg" href="http://www.image-maps.com/" shape="poly" coords="210,169,283,168,283,44,212,44" style="outline:none;" target="_self"     />
+    <img id="Image-Maps-Com-image-maps-2022-05-21-223917" src="ResidensialOasis2.jpg" border="0" width="380" height="568" orgWidth="380" orgHeight="568" usemap="#image-maps-2022-05-21-223917" alt="" />
+    <map name="image-maps-2022-05-21-223917" id="ImageMapsCom-image-maps-2022-05-21-223917">
+      <area  alt="" title="palapa1" @click="$refs.palapa.open('Palapa 1')" shape="rect" coords="226,315,361,347" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapa2" @click="$refs.palapa.open('Palapa 2')" shape="rect" coords="228,349,361,383" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapa3" @click="$refs.palapa.open('Palapa 3')" shape="rect" coords="227,387,360,418" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapa4" @click="$refs.palapa.open('Palapa 4')" shape="rect" coords="227,421,359,452" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapa5" @click="$refs.palapa.open('Palapa 5')" shape="rect" coords="226,456,358,487" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapa6" @click="$refs.palapa.open('Palapa 6')" shape="rect" coords="226,492,357,523" style="outline:none;" target="_self"     />
+      <area  alt="" title="cancha" @click="$refs.palapa.open('Cancha')" shape="rect" coords="232,527,353,557" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapaImg1" @click="$refs.palapa.open('Palapa 1')" shape="poly" coords="89,410,81,408,76,403,72,398,70,393,71,386,73,380,78,376,83,373,90,373,97,374,105,380,111,389,111,398,108,403,105,407,98,410" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapaImg2" @click="$refs.palapa.open('Palapa 2')" shape="poly" coords="89,519,83,517,79,513,76,508,77,503,79,498,83,495,87,493,94,494,99,496,105,502,106,509,105,514,101,517,98,518,96,519" style="outline:none;" target="_self"     />
+      <area  alt="" title="PalapaImg3" @click="$refs.palapa.open('Palapa 3')" shape="poly" coords="98,485,98,473,100,471,104,469,109,473,120,473,121,485" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapaImg4" @click="$refs.palapa.open('Palapa 4')" shape="poly" coords="33,463,43,464,49,460,52,456,48,449,41,441,33,441,25,445,27,458" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapaImg5" @click="$refs.palapa.open('Palapa 5')" shape="poly" coords="133,266.00001525878906,131,261.00001525878906,133,258.00001525878906,133,254.00001525878906,131,252.00001525878906,127,250.00001525878906,127,241.00001525878906,131,240.00001525878906,138,244.00001525878906,144,250.00001525878906,143,257.00001525878906,144,264.00001525878906,142,267.00001525878906,140,270.00001525878906" style="outline:none;" target="_self"     />
+      <area  alt="" title="palapaImg6" @click="$refs.palapa.open('Palapa 6')" shape="poly" coords="160,199,160,186,186,186,187,200" style="outline:none;" target="_self"     />
+      <area  alt="" title="canchaImg" @click="$refs.palapa.open('Cancha')" shape="poly" coords="189,152,258,152,257,34,192,37" style="outline:none;" target="_self"     />
     </map>
-  <jc-dialog title="kdfnvlo" v-model="opened">
-    <div>Aqui</div>
-  </jc-dialog>
+    <palapa ref="palapa"></palapa>
   </q-page>
 </template>
 
 <script>
+import palapa from 'components/palapa.vue'
 
 export default {
+  components: { palapa },
   data () {
     return {
       opened: false
