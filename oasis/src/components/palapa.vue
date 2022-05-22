@@ -52,6 +52,18 @@
     </div>
     <br>
     <div class="text-h6 bg-dark text-white text-center"> Horas apartadas </div>
+    <q-markup-table dense>
+      <tbody>
+        <tr v-for="(hora, index) in palapa.horas" :key="index">
+          <td class="text-left">De:</td>
+          <td class="text-right">{{ hora.de }}</td>
+          <td class="text-left">a:</td>
+          <td class="text-right">{{ hora.a }}</td>
+          <td class="text-left">regla 30min:</td>
+          <td class="text-right">{{ hora.regla30 }}</td>
+        </tr>
+      </tbody>
+    </q-markup-table>>
   </jc-dialog>
 </template>
 
@@ -70,31 +82,120 @@ export default {
       palapas: [
         {
           nombre: 'Palapa 1',
-          imagen: "test1.jpg"
+          imagen: "test1.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '12:00',
+              regla30: '12:30'
+            },
+            {
+              de: '12:30',
+              a: '16:00',
+              regla30: '16:30'
+            },
+          ]
         },
         {
           nombre: 'Palapa 2',
-          imagen: "test2.jpg"
+          imagen: "test2.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '19:00',
+              regla30: '19:30'
+            },
+            {
+              de: '12:30',
+              a: '16:00',
+              regla30: '16:30'
+            },
+          ]
         },
         {
           nombre: 'Palapa 3',
-          imagen: "test3.jpg"
+          imagen: "test3.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '11:00',
+              regla30: '11:30'
+            },
+            {
+              de: '12:00',
+              a: '14:00',
+              regla30: '14:30'
+            },
+            {
+              de: '15:00',
+              a: '18:00',
+              regla30: '18:30'
+            }
+          ]
         },
         {
           nombre: 'Palapa 4',
-          imagen: "test4.jpg"
+          imagen: "test4.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '13:00',
+              regla30: '13:00'
+            }
+          ]
         },
         {
           nombre: 'Palapa 5',
-          imagen: "test5.jpg"
+          imagen: "test5.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '11:00',
+              regla30: '11:30'
+            },
+            {
+              de: '13:30',
+              a: '18:00',
+              regla30: '16:30'
+            },
+          ]
         },
         {
           nombre: 'Palapa 6',
-          imagen: "test6.jpg"
+          imagen: "test6.jpg",
+          horas: [
+            {
+              de: '12:00',
+              a: '19:00',
+              regla30: '19:30'
+            }
+          ]
         },
         {
           nombre: 'Cancha',
-          imagen: "test7.jpg"
+          imagen: "test7.jpg",
+          horas: [
+            {
+              de: '8:00',
+              a: '10:00',
+              regla30: '10:30'
+            },
+            {
+              de: '10:30',
+              a: '12:30',
+              regla30: '13:00'
+            },
+            {
+              de: '13:00',
+              a: '15:00',
+              regla30: '15:30'
+            },
+            {
+              de: '15:30',
+              a: '17:30',
+              regla30: '18:00'
+            },
+          ]
         },
       ]
     }
