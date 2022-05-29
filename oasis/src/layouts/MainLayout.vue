@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated style="background: radial-gradient(circle, #00B280 0%, #004E2B 100%)">
       <q-toolbar>
         <q-btn
           flat

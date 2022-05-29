@@ -4,24 +4,35 @@
       <div class="text-center bg-teal-6 text-weight-bold text-white">{{`Lotes: ${strLotes()}`}}</div>
       <div class="text-center bg-teal-4 text-weight-bold text-white">{{`Deuda: ${deuda()}`}}</div>
       <hr>
-      <div class="text-center text-weight-bold">Mensajes</div>
-      <q-list bordered class="rounded-borders">
-      <q-expansion-item
-        v-for="(mensaje, index) in mensajes"
-        :key="index"
-        expand-separator
-        :label="mensaje.asunto"
-        :caption="mensaje.min"
-        class="bg-weight-bold"
-        :class="color(mensaje.tipo)"
-      >
-        <q-card>
-          <q-card-section class="bg-yellow-2">
-            {{mensaje.texto}}
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
-    </q-list>
+
+      <q-card class="text-white"
+      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
+        <q-card-section>
+          <div class="text-center text-weight-bold">{{`Mensajes ${mensajes.length}`}}</div>
+        </q-card-section>
+
+        <q-separator dark inset />
+
+        <q-card-section>
+          <q-list bordered class="rounded-borders">
+            <q-expansion-item
+              v-for="(mensaje, index) in mensajes"
+              :key="index"
+              expand-separator
+              :label="mensaje.asunto"
+              :caption="mensaje.min"
+              class="bg-weight-bold rounded-borders"
+              :class="color(mensaje.tipo)"
+            >
+              <q-card>
+                <q-card-section class="bg-yellow-2 text-black">
+                  {{mensaje.texto}}
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </q-list>
+        </q-card-section>
+      </q-card>
   </q-page>
 </template>
 
@@ -111,7 +122,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
