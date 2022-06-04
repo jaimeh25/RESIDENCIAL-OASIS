@@ -6,7 +6,6 @@
   "author": "Jaime Mendez <jaimemendez04@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "yarn quasar dev",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
