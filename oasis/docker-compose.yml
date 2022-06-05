@@ -1,10 +1,10 @@
-# for local development
 version: '3.7'
 services:
-  quasar:
+  web:
     build: .
+    container_name: 'quasar-dev'
     ports:
-    - '3000:3000'
+      - "8080:8080"
     volumes:
-    - '.:/usr/src/'
-    command: /bin/sh -c "yarn quasar dev"
+      - .:/var/www/:rw
+      - /var/www/node_modules

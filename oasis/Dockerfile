@@ -1,9 +1,13 @@
 # develop stage
 FROM node:14
-WORKDIR /usr/src
-COPY ["package.json", "/usr/src/"]
+WORKDIR /var/www
+ENV NODE_ENV=development
+COPY ["package.json", "/var/www"]
 RUN yarn global add @quasar/cli
-COPY [".", "/usr/src/"]
+COPY [".", "/var/www"]
 # build stag
 RUN yarn
-CMD ["yarn","quasar", "dev"] 
+EXPOSE 8080
+VOLUME /var/www
+
+CMD ["quasar", "dev"]
