@@ -37,8 +37,11 @@
 </template>
 
 <script>
+
+import { defineComponent } from 'vue'
 import numeral from 'numeral';
-export default {
+export default{
+  name: index,
   data() {
     return {
       usuario: {

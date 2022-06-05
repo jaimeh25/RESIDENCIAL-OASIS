@@ -10,4 +10,4 @@ RUN yarn
 EXPOSE 8080
 VOLUME /var/www
 
-CMD ["yarn","quasar", "dev"]
+CMD ["quasar", "dev"]
