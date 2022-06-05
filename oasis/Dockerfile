@@ -9,5 +9,3 @@ COPY [".", "/var/www"]
 RUN yarn
 EXPOSE 8080
 VOLUME /var/www
-
-CMD ["quasar", "dev"]
