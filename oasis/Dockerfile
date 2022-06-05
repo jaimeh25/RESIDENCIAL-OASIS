@@ -6,4 +6,4 @@ RUN yarn global add @quasar/cli
 COPY [".", "/usr/src/"]
 # build stag
 RUN yarn
-CMD ["quasar", "dev"] 
+CMD ["yarn","quasar", "dev"] 
