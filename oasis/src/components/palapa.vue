@@ -1,10 +1,10 @@
 <template>
   <jc-dialog :title="title" v-model="opened">
     <div class="row">
-      <div class="col-6">
-        <img :src="palapa.imagen" alt="" style="width:150px">
+      <div class="col-7">
+        <img :src="palapa.imagen" alt="" style="width:200px">
       </div>
-      <div class="col-6">
+      <div class="col-5">
         <q-input filled v-model="date" style="width:150px" label="Fecha a apartar">
           <template v-slot:prepend>
             <q-icon name="event" class="cursor-pointer">
@@ -63,7 +63,7 @@
           <td class="text-right">{{ hora.regla30 }}</td>
         </tr>
       </tbody>
-    </q-markup-table>>
+    </q-markup-table>
   </jc-dialog>
 </template>
 
@@ -82,7 +82,7 @@ export default {
       palapas: [
         {
           nombre: 'Palapa 1',
-          imagen: "test1.jpg",
+          imagen: "palapa1.jpeg",
           horas: [
             {
               de: '8:00',
@@ -98,7 +98,7 @@ export default {
         },
         {
           nombre: 'Palapa 2',
-          imagen: "test2.jpg",
+          imagen: "palapa2.jpeg",
           horas: [
             {
               de: '8:00',
@@ -114,7 +114,7 @@ export default {
         },
         {
           nombre: 'Palapa 3',
-          imagen: "test3.jpg",
+          imagen: "palapa3.jpeg",
           horas: [
             {
               de: '8:00',
@@ -135,7 +135,7 @@ export default {
         },
         {
           nombre: 'Palapa 4',
-          imagen: "test4.jpg",
+          imagen: "palapa4.jpeg",
           horas: [
             {
               de: '8:00',
@@ -146,7 +146,7 @@ export default {
         },
         {
           nombre: 'Palapa 5',
-          imagen: "test5.jpg",
+          imagen: "palapa5.jpeg",
           horas: [
             {
               de: '8:00',
@@ -162,7 +162,7 @@ export default {
         },
         {
           nombre: 'Palapa 6',
-          imagen: "test6.jpg",
+          imagen: "palapa6.jpeg",
           horas: [
             {
               de: '12:00',
@@ -172,8 +172,8 @@ export default {
           ]
         },
         {
-          nombre: 'Cancha',
-          imagen: "test7.jpg",
+          nombre: 'Cancha 7',
+          imagen: "cancha7.jpeg",
           horas: [
             {
               de: '8:00',

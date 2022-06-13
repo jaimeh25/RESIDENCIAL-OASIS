@@ -50,16 +50,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Inicio',
-    caption: 'Inicio',
-    icon: 'home',
-    link: '/'
-  },
-  {
     title: 'Palapas',
     caption: 'Apartar palapas',
     icon: 'deck',
-    link: '#/palapas/'
+    link: '/'
+  },
+  {
+    title: 'Reglamento',
+    caption: 'Reglamento',
+    icon: 'gavel',
+    link: '#/reglamento/'
   }
 ]
 

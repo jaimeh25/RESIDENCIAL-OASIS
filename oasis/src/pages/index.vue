@@ -1,47 +1,35 @@
 <template>
-  <q-page>
-      <div class="text-center bg-teal-8 text-h6 text-white">{{usuario.nombre}}</div>
-      <div class="text-center bg-teal-6 text-weight-bold text-white">{{`Lotes: ${strLotes()}`}}</div>
-      <div class="text-center bg-teal-4 text-weight-bold text-white">{{`Deuda: ${deuda()}`}}</div>
-      <hr>
+  <q-page class="flex flex-center">
+    <div id="cont" style="position:relative; width: 380px; height:500px;">
+      <img id="Image-Maps-Com-image-maps-2022-06-13-001140" src="https://app.image-maps.com/m/private/0/prfbklpfc72bo1hc85ekhka3tf_residensialoasis4.jpg" border="0" width="380" height="583" orgWidth="380" orgHeight="583" usemap="#image-maps-2022-06-13-001140" alt="" />
+      <map name="image-maps-2022-06-13-001140" id="ImageMapsCom-image-maps-2022-06-13-001140">
+        <area  alt="" title="acceso1" href="tel:+526251477133" shape="rect" coords="229,242,366,315" style="outline:none;" target="_self"     />
+        <area  alt="" title="acceso2" href="tel:+526142175113" shape="rect" coords="229,329,366,402" style="outline:none;" target="_self"     />
+        <area shape="rect" coords="378,581,380,583" alt="Image Map" style="outline:none;" title="Image Map" href="https://www.image-maps.com/" />
+        <area  alt="" title="palapa1" @click="$refs.palapa.open('Palapa 1')" shape="poly" coords="46,548,56,547,60,540,62,532,57,526,55,522,53,520,48,520,41,525,42,531,39,537,39,543" style="outline:none;" target="_self"     />
+        <area  alt="" title="palapa2" @click="$refs.palapa.open('Palapa 2')" shape="poly" coords="48,480,28,480,26,472,30,466,33,462,33,457,37,450,47,451,49,460,47,468,43,472" style="outline:none;" target="_self"     />
+        <area  alt="" title="palapa3" @click="$refs.palapa.open('Palapa 3')" shape="poly" coords="19,151.99999809265137,25,147.99999809265137,38,147.99999809265137,41,156.99999809265137,39,161.99999809265137,35,172.99999809265137,29,175.99999809265137,22,173.99999809265137,19,163.99999809265137" style="outline:none;" target="_self"     />
+        <area  alt="" title="palapa4" @click="$refs.palapa.open('Palapa 4')" shape="poly" coords="144,266,151,260,152,253,151,241,148,239,146,226,135,225,132,234,129,238,129,248,136,256,139,264" style="outline:none;" target="_self"     />
+        <area  alt="" title="palapa5" @click="$refs.palapa.open('Palapa 5')" shape="poly" coords="345,220.99999809265137,357,219.99999809265137,359,212.99999809265137,358,203.99999809265137,357,193.99999809265137,357,191.99999809265137,341,192.99999809265137,341,202.99999809265137,337,208.99999809265137,338,216.99999809265137" style="outline:none;" target="_self"     />
+        <area  alt="" title="palapa6" @click="$refs.palapa.open('Palapa 6')" shape="poly" coords="102,417,116,412,122,400,120,387,112,381,104,378,94,381,88,388,85,399,87,410,96,415" style="outline:none;" target="_self"     />
+        <area  alt="" title="cancha7" @click="$refs.palapa.open('Cancha 7')" shape="poly" coords="202,144,269,143,280,131,277,14,213,16,205,20,200,30" style="outline:none;" target="_self"     />
+      </map>
 
-      <q-card class="text-white"
-      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
-        <q-card-section>
-          <div class="text-center text-weight-bold">{{`Mensajes ${mensajes.length}`}}</div>
-        </q-card-section>
-
-        <q-separator dark inset />
-
-        <q-card-section>
-          <q-list bordered class="rounded-borders">
-            <q-expansion-item
-              v-for="(mensaje, index) in mensajes"
-              :key="index"
-              expand-separator
-              :label="mensaje.asunto"
-              :caption="mensaje.min"
-              class="bg-weight-bold rounded-borders"
-              :class="color(mensaje.tipo)"
-            >
-              <q-card>
-                <q-card-section class="bg-yellow-2 text-black">
-                  {{mensaje.texto}}
-                </q-card-section>
-              </q-card>
-            </q-expansion-item>
-          </q-list>
-        </q-card-section>
-      </q-card>
+      <span style="position:absolute; top:100px; left: 20px;">{{usuario.nombre}}</span>
+      <span style="position:absolute; top:120px; left: 20px; width: 150px; text-align: center;">{{strLotes()}}</span>
+    </div>
+    <palapa ref="palapa"></palapa>
   </q-page>
 </template>
 
 <script>
+import palapa from 'components/palapa.vue'
 
-import numeral from 'numeral';
-export default{
-  data() {
+export default {
+  components: { palapa },
+  data () {
     return {
+      opened: false,
       usuario: {
         nombre: 'Jaime Mendez Enriquez',
         lotes: [
@@ -54,42 +42,16 @@ export default{
             deuda: 5000
           }
         ]
-      },
-      mensajes:[
-        {
-          asunto: 'Deuda vencida de su lote',
-          min: 'vencido el 01 marzo 2022',
-          texto: `Buenos días Sr Jaime Mendez.
-          
-          Usted tien un adeudo de $100,000.00 que ha vencido el dia 01 de marzo. Le pedimos de la manera mas atenta realizar su pago a la brevedad.
-          
-          Attentamente la gerencia`,
-          tipo: 1
-        },
-        {
-          asunto: 'Deuda  de su lote',
-          min: 'vence el 01 junio 2022',
-          texto: `Buenos días Sr Jaime Mendez.
-          
-          Usted tien un adeudo de $100,000.00 que vencera el dia 01 de junio. Le pedimos de la manera mas atenta realizar su pago a tiempo.
-          
-          Attentamente la gerencia`,
-          tipo: 2
-        },
-        {
-          asunto: 'Reunion redidencial',
-          min: 'Fecha: 01 junio 2022',
-          texto: `Buenos días Sr Jaime Mendez.
-          
-         Se le informa que el dia 1 de junio abra una reunion residencial para tocar algunos temas acerca de el parque.
-          
-          Attentamente la gerencia`,
-          tipo: 3
-        },
-      ]
+      }
     }
   },
   methods: {
+    open(){
+      this.opened = true
+    },
+    close(){
+      this.opened = false
+    },
     strLotes () {
       let cadena=''
       let se= true
@@ -102,24 +64,11 @@ export default{
         cadena += lote.lote
       });
       return cadena
-    },
-    deuda () {
-      let total = 0
-      let se= true
-      this.usuario.lotes.forEach(function (lote) {
-        total += lote.deuda
-      });
-      return this.currency(total)
-    },
-    currency(number){
-      var myNumeral= numeral(number)
-      return myNumeral.format('$0,0.00')
-    },
-    color(tipo){
-      if (tipo == 1) return 'bg-red-7'
-      if (tipo == 2) return 'bg-yellow-7'
-      if (tipo == 3) return 'bg-blue-7'
     }
   }
 }
 </script>
+
+<style>
+
+</style>
