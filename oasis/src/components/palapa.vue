@@ -1,66 +1,93 @@
 <template>
   <jc-dialog :title="title" v-model="opened">
+    <div 
+    class="text-h6 text-white text-center q-mb-md rounded-borders"
+    style="background: radial-gradient(circle, #00B280 0%, #004E2B 100%)"
+    > 
+      Selecciona Fecha y Horas
+    </div>
     <div class="row">
       <div class="col-7">
-        <img :src="palapa.imagen" alt="" style="width:200px">
+        <img :src="palapa.imagen" alt="" style="width:200px" class="rounded-borders">
       </div>
       <div class="col-5">
-        <q-input filled v-model="date" style="width:150px" label="Fecha a apartar">
-          <template v-slot:prepend>
-            <q-icon name="event" class="cursor-pointer">
-              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-date v-model="date" mask="DD-MM-YYYY">
-                  <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
-                  </div>
-                </q-date>
-              </q-popup-proxy>
-            </q-icon>
-          </template>
-        </q-input>
-        <q-input filled v-model="time1" style="width:150px" label="Hora inicial">
-          <template v-slot:prepend>
-            <q-icon name="access_time" class="cursor-pointer">
-              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-time v-model="time1" mask="HH:mm" format24h>
-                  <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
-                  </div>
-                </q-time>
-              </q-popup-proxy>
-            </q-icon>
-          </template>
-        </q-input>
-        <q-input filled v-model="time2" style="width:150px" label="Hora final">
-          <template v-slot:prepend>
-            <q-icon name="access_time" class="cursor-pointer">
-              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-time v-model="time2" mask="HH:mm" format24h>
-                  <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
-                  </div>
-                </q-time>
-              </q-popup-proxy>
-            </q-icon>
-          </template>
-        </q-input>
+        <q-list bordered separator dense class="rounded-borders">
+          <q-item clickable v-ripple>
+            <q-item-section side bottom>
+              <q-icon name="event" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label overline>FECHA</q-item-label>
+              <q-item-label>{{dateSelect}}</q-item-label>
+            </q-item-section>
+            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+              <q-date v-model="dateSelect" mask="DD-MM-YYYY">
+                <div class="row items-center justify-end">
+                  <q-btn v-close-popup label="Close" color="primary" flat />
+                </div>
+              </q-date>
+            </q-popup-proxy>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section side bottom>
+              <q-icon name="access_time" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label overline>HORA INICIAL</q-item-label>
+              <q-item-label>{{hora_ini}}</q-item-label>
+            </q-item-section>
+            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+              <q-time v-model="time1" mask="HH:mm">
+                <div class="row items-center justify-end">
+                  <q-btn v-close-popup label="Close" color="primary" flat />
+                </div>
+              </q-time>
+            </q-popup-proxy>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section side bottom>
+              <q-icon name="access_time" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label overline>HORA FINAL</q-item-label>
+              <q-item-label>{{hora_fin}}</q-item-label>
+            </q-item-section>
+            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+              <q-time v-model="time2" mask="HH:mm">
+                <div class="row items-center justify-end">
+                  <q-btn v-close-popup label="Close" color="primary" flat />
+                </div>
+              </q-time>
+            </q-popup-proxy>
+          </q-item>
+        </q-list>
       </div>
     </div>
-    <br>
+    <div class="text-red-14 text-weight-bolder text-center"> {{errorMessage}}</div>
+    <div class="text-green-9 text-weight-bolder text-center" v-if="save">Se ha apartado la palapa</div>
     <div class="text-center">
-      <q-btn color="primary" icon="check" label="Apartar palapa" />
+      <q-btn color="primary" icon="check" label="Apartar palapa" @click="postApartado()" />
     </div>
     <br>
-    <div class="text-h6 bg-dark text-white text-center"> Horas apartadas </div>
-    <q-markup-table dense>
-      <tbody>
-        <tr v-for="(hora, index) in palapa.horas" :key="index">
-          <td class="text-left">De:</td>
-          <td class="text-right">{{ hora.de }}</td>
-          <td class="text-left">a:</td>
-          <td class="text-right">{{ hora.a }}</td>
-          <td class="text-left">regla 30min:</td>
-          <td class="text-right">{{ hora.regla30 }}</td>
+    <div 
+    class="text-h6 text-white text-center q-mb-md rounded-borders"
+    style="background: radial-gradient(circle, #00B280 0%, #004E2B 100%)"
+    >
+      Horas apartadas {{ dateSelect }}
+    </div>
+    <q-markup-table dense class="q-mb-md">
+      <thead class="bg-grey-4">
+        <th>De</th>
+        <th>A</th>
+        <th>Limpieza</th>
+      </thead>
+      <tbody class="bg-grey-2">
+        <tr v-for="(hora, index) in apartados" :key="index">
+          <td class="text-center">{{ amPm(hora.entrada) }}</td>
+          <td class="text-center">{{ amPm(hora.salida) }}</td>
+          <td class="text-center">{{ amPm(hora.limpieza) }}</td>
         </tr>
       </tbody>
     </q-markup-table>
@@ -70,146 +97,97 @@
 <script>
 
 import { ref } from 'vue'
+import { date } from 'quasar'
 export default {
+  props: {
+    tel: String,
+  },
   data () {
     return {
-      date: ref('2019-02-01'),
-      time1: ref('08:00'),
+      errorMessage: '',
+      dateSelect: date.formatDate(Date.now(), 'DD-MM-YYYY'),
+      time1: ref('17:00'),
       time2: ref('19:00'),
       opened: false,
       title: 'Sin titulo',
       palapa: {},
-      palapas: [
-        {
-          nombre: 'Palapa 1',
-          imagen: "palapa1.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '12:00',
-              regla30: '12:30'
-            },
-            {
-              de: '12:30',
-              a: '16:00',
-              regla30: '16:30'
-            },
-          ]
-        },
-        {
-          nombre: 'Palapa 2',
-          imagen: "palapa2.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '19:00',
-              regla30: '19:30'
-            },
-            {
-              de: '12:30',
-              a: '16:00',
-              regla30: '16:30'
-            },
-          ]
-        },
-        {
-          nombre: 'Palapa 3',
-          imagen: "palapa3.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '11:00',
-              regla30: '11:30'
-            },
-            {
-              de: '12:00',
-              a: '14:00',
-              regla30: '14:30'
-            },
-            {
-              de: '15:00',
-              a: '18:00',
-              regla30: '18:30'
-            }
-          ]
-        },
-        {
-          nombre: 'Palapa 4',
-          imagen: "palapa4.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '13:00',
-              regla30: '13:00'
-            }
-          ]
-        },
-        {
-          nombre: 'Palapa 5',
-          imagen: "palapa5.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '11:00',
-              regla30: '11:30'
-            },
-            {
-              de: '13:30',
-              a: '18:00',
-              regla30: '16:30'
-            },
-          ]
-        },
-        {
-          nombre: 'Palapa 6',
-          imagen: "palapa6.jpeg",
-          horas: [
-            {
-              de: '12:00',
-              a: '19:00',
-              regla30: '19:30'
-            }
-          ]
-        },
-        {
-          nombre: 'Cancha 7',
-          imagen: "cancha7.jpeg",
-          horas: [
-            {
-              de: '8:00',
-              a: '10:00',
-              regla30: '10:30'
-            },
-            {
-              de: '10:30',
-              a: '12:30',
-              regla30: '13:00'
-            },
-            {
-              de: '13:00',
-              a: '15:00',
-              regla30: '15:30'
-            },
-            {
-              de: '15:30',
-              a: '17:30',
-              regla30: '18:00'
-            },
-          ]
-        },
-      ]
+      apartados: [],
+      save: false
     }
   },
+  computed: {
+    hora_ini () {
+      return this.amPm(this.time1)
+    },
+    hora_fin () {
+      return this.amPm(this.time2)
+    },
+  },
+  watch: {
+    dateSelect (val) {
+      this.limpiar()
+    }
+  },  
   methods: {
     open(title){
       this.opened = true
       this.title = title
-      this.getPalapa(title)
+      this.getPalapa()
+      this.limpiar()
     },
-    getPalapa(title){
-      // Consulta API -------Arreglo palapas Provisional
-      this.palapa = this.palapas.find(element => element.nombre === title);
-      console.log(palapa)
+    getPalapa(){
+      this.$api.get(`oasis/palapas/${this.title}`).then(res => {
+        this.palapa = res.data
+      })
+    },
+    getApartados(){
+      let dDate= this.strDate(this.dateSelect)
+      this.$api.get(`oasis/apartados/${this.title}/${date.formatDate(dDate, 'YYYY-MM-DD')}`).then(res => {
+        this.apartados = res.data
+      })
+    },
+    postApartado(){
+      let dDate= this.strDate(this.dateSelect)
+      let post = {
+        palapa: this.title,
+        tel: this.tel,
+        fecha: date.formatDate(dDate, 'YYYY-MM-DD'),
+        entrada: this.time1,
+        salida: this.time2
+      }
+      debugger
+      this.$api.post('oasis/create_apartado/',post).then(res => {
+        if (typeof res.data === "string") { 
+          this.errorMessage= res.data
+        } else {
+          this.save = true
+          this.errorMessage= ''
+          this.getApartados()
+        }
+      })
+    },
+    amPm(hora){
+      let h=parseInt(hora.substring(0,2))
+      if (h === 12){
+        return hora + " PM"
+      }
+      if (h>12) {
+        return String(h-12) + hora.substring(2,5) + " PM"
+      } else {
+        return hora + " AM"
+      }
+    },
+    strDate(str) {
+      return new Date(
+        parseInt(str.substring(6,10)),
+        parseInt(str.substring(3,5)) - 1,
+        parseInt(str.substring(0,2))
+        )
+    },
+    limpiar() {
+      this.errorMessage=''
+      this.save=false
+      this.getApartados()
     }
   }
 }

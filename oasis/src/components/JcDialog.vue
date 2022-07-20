@@ -6,8 +6,8 @@
   >
     <q-card style="width: 100%; height:100%;" class="rounded-t-lg" id="body">
       <div style="width: 100%">
-        <q-bar class="bg-dark text-white" style="min-width: 100%">
-          <span class="text-grey-4">{{ title }}</span>
+        <q-bar class="text-white" style="min-width: 100%; background: radial-gradient(circle, #00B280 0%, #004E2B 100%)">
+          <span class="text-white">{{ title }}</span>
           <q-space />
           <q-btn dense icon="close" v-close-popup>
             <q-tooltip>Close</q-tooltip>

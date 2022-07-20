@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <div class="flex flex-center">
     <div id="cont" style="position:relative; width: 380px; height:500px;">
       <img id="Image-Maps-Com-image-maps-2022-06-13-001140" src="https://app.image-maps.com/m/private/0/prfbklpfc72bo1hc85ekhka3tf_residensialoasis4.jpg" border="0" width="380" height="583" orgWidth="380" orgHeight="583" usemap="#image-maps-2022-06-13-001140" alt="" />
       <map name="image-maps-2022-06-13-001140" id="ImageMapsCom-image-maps-2022-06-13-001140">
@@ -15,11 +15,11 @@
         <area  alt="" title="cancha7" @click="$refs.palapa.open('Cancha 7')" shape="poly" coords="202,144,269,143,280,131,277,14,213,16,205,20,200,30" style="outline:none;" target="_self"     />
       </map>
 
-      <span style="position:absolute; top:100px; left: 20px;">{{usuario.nombre}}</span>
-      <span style="position:absolute; top:120px; left: 20px; width: 150px; text-align: center;">{{strLotes()}}</span>
+      <span style="position:absolute; top:100px; left: 20px;">{{residente.nombre}}</span>
+      <span style="position:absolute; top:120px; left: 20px; width: 150px; text-align: center;">{{`Lotes: ${residente.lotesStr}`}}</span>
     </div>
-    <palapa ref="palapa"></palapa>
-  </q-page>
+    <palapa ref="palapa" :tel="residente.tel"></palapa>
+  </div>
 </template>
 
 <script>
@@ -30,6 +30,7 @@ export default {
   data () {
     return {
       opened: false,
+      residente: {},
       usuario: {
         nombre: 'Jaime Mendez Enriquez',
         lotes: [
@@ -65,6 +66,12 @@ export default {
       });
       return cadena
     }
+  },
+  created() {
+    let tel = '6251020347'
+    this.$api.get(`oasis/residentes/${tel}`).then(res => {
+        this.residente = res.data
+      })
   }
 }
 </script>
