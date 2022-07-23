@@ -155,16 +155,14 @@ export default {
         entrada: this.time1,
         salida: this.time2
       }
-      debugger
       this.$api.post('oasis/create_apartado/',post).then(res => {
-        if (typeof res.data === "string") { 
-          this.errorMessage= res.data
-        } else {
           this.save = true
           this.errorMessage= ''
           this.getApartados()
-        }
       })
+      .catch(error => {
+          this.error= this.errorMessage= error.response.data
+        })
     },
     amPm(hora){
       let h=parseInt(hora.substring(0,2))

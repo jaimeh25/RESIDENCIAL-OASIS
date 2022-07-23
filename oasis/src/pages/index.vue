@@ -19,31 +19,20 @@
       <span style="position:absolute; top:120px; left: 20px; width: 150px; text-align: center;">{{`Lotes: ${residente.lotesStr}`}}</span>
     </div>
     <palapa ref="palapa" :tel="residente.tel"></palapa>
+    <login ref="login" @update="update()"></login>
   </div>
 </template>
 
 <script>
 import palapa from 'components/palapa.vue'
+import login from 'components/login.vue'
 
 export default {
-  components: { palapa },
+  components: { palapa, login },
   data () {
     return {
       opened: false,
-      residente: {},
-      usuario: {
-        nombre: 'Jaime Mendez Enriquez',
-        lotes: [
-          {
-            lote: 'L11',
-            deuda: 5000
-          },
-          {
-            lote: 'L12',
-            deuda: 5000
-          }
-        ]
-      }
+      residente: {}
     }
   },
   methods: {
@@ -53,25 +42,14 @@ export default {
     close(){
       this.opened = false
     },
-    strLotes () {
-      let cadena=''
-      let se= true
-      this.usuario.lotes.forEach(function (lote) {
-        if (se) {
-          se = false
-        } else{
-          cadena += ', ' 
-        }
-        cadena += lote.lote
-      });
-      return cadena
-    }
-  },
-  created() {
-    let tel = '6251020347'
-    this.$api.get(`oasis/residentes/${tel}`).then(res => {
+    update() {
+      this.$api.get(`oasis/residentes/${localStorage.getItem('tel')}`).then(res => {
         this.residente = res.data
       })
+    },
+  },
+  created() {
+    this.update()
   }
 }
 </script>
