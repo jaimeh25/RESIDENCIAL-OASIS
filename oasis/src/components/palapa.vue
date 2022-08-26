@@ -79,12 +79,20 @@
     </div>
     <q-markup-table dense class="q-mb-md">
       <thead class="bg-grey-4">
+        <th>Borrar</th>
         <th>De</th>
         <th>A</th>
         <th>Limpieza</th>
       </thead>
       <tbody class="bg-grey-2">
         <tr v-for="(hora, index) in apartados" :key="index">
+          <!-- <td>{{hora.id + " " + hora.pertenese}}</td> -->
+          <td><q-btn 
+            icon="delete" 
+            color="negative" 
+            v-if="hora.pertenese"
+            @click="borrar_apartado(hora.id)"
+          /></td>
           <td class="text-center">{{ amPm(hora.entrada) }}</td>
           <td class="text-center">{{ amPm(hora.salida) }}</td>
           <td class="text-center">{{ amPm(hora.limpieza) }}</td>
@@ -142,7 +150,7 @@ export default {
     },
     getApartados(){
       let dDate= this.strDate(this.dateSelect)
-      this.$api.get(`oasis/apartados/${this.title}/${date.formatDate(dDate, 'YYYY-MM-DD')}`).then(res => {
+      this.$api.get(`oasis/apartados/${this.title}/${date.formatDate(dDate, 'YYYY-MM-DD')}/${localStorage.getItem('tel')}`).then(res => {
         this.apartados = res.data
       })
     },
@@ -163,6 +171,24 @@ export default {
       .catch(error => {
           this.error= this.errorMessage= error.response.data
         })
+    },
+    borrar_apartado(id) {
+      this.$q.dialog({
+        title: 'Eliminar apartado',
+        message: '¿Esta seguro que desea eliminar este apartado?',
+        cancel: true,
+        //persistent: true
+      }).onOk(() => {
+        this.$api.delete(`oasis/delete_apartado/${id}`).then(res => {
+          this.getApartados()
+      })
+      }).onOk(() => {
+        // console.log('>>>> second OK catcher')
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
     },
     amPm(hora){
       let h=parseInt(hora.substring(0,2))
