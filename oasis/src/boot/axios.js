@@ -1,7 +1,12 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
 
+const token = 'Token ' + localStorage.getItem('token')
 const api = axios.create({ baseURL: 'https://jcsoftapi.com/'  })
+if (token.length > 20) {
+  api.defaults.headers.common['Authorization'] = 'Token ' + localStorage.getItem('token')
+}
+
 //const api = axios.create({ baseURL: 'https://localhost:44335/'  })
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

@@ -8,6 +8,14 @@ const routes = [
       { path: 'palapas', component: () => import('pages/palapas.vue') },
       { path: 'mensajes', component: () => import('pages/mensajes.vue') },
       { path: 'reglamento', component: () => import('pages/reglamento.vue') },
+      { path: 'avisoprivacidad', component: () => import('pages/avisoprivacidad.vue') },
+    ]
+  },
+  {
+    path: '/oasis/',
+    component: () => import('layouts/BlankLayout.vue'),
+    children: [
+      { path: 'avisoprivacidad', component: () => import('pages/avisoprivacidad.vue') },
     ]
   },
 
