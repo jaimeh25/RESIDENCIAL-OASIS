@@ -1,4 +1,4 @@
-package org.capacitor.quasar.app;
+package org.capacitor.quasar.oasis;
 
 import com.getcapacitor.BridgeActivity;
 

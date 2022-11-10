@@ -1,5 +1,5 @@
 {
-	"appId": "org.capacitor.quasar.app",
+	"appId": "org.capacitor.quasar.oasis",
 	"appName": "RESIDENCIAL OASIS",
 	"bundledWebRuntime": false,
 	"npmClient": "[object Object]",
