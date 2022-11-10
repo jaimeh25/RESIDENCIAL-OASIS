@@ -1,7 +1,14 @@
 <template>
   <div class="flex flex-center">
     <div id="cont" style="position:relative; width: 380px; height:500px;">
-      <img id="Image-Maps-Com-image-maps-2022-06-13-001140" src="https://app.image-maps.com/m/private/0/prfbklpfc72bo1hc85ekhka3tf_residensialoasis4.jpg" border="0" width="380" height="583" orgWidth="380" orgHeight="583" usemap="#image-maps-2022-06-13-001140" alt="" />
+      <img id="Image-Maps-Com-image-maps-2022-06-13-001140" 
+        src="ResidensialOasis4.jpg" 
+        border="0" 
+        width="380" 
+        height="583" 
+        orgWidth="380" 
+        orgHeight="583" 
+        usemap="#image-maps-2022-06-13-001140" alt="" />
       <map name="image-maps-2022-06-13-001140" id="ImageMapsCom-image-maps-2022-06-13-001140">
         <area  alt="" title="acceso1" href="tel:+526251477133" shape="rect" coords="229,242,366,315" style="outline:none;" target="_self"     />
         <area  alt="" title="acceso2" href="tel:+526142175113" shape="rect" coords="229,329,366,402" style="outline:none;" target="_self"     />
