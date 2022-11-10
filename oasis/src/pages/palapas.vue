@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-center">
     <div id="cont" style="position:relative; width: 380px; height:500px;">
-      <img id="Image-Maps-Com-image-maps-2022-06-13-001140" 
+      <img id="Image-Maps-Com-image-maps-2022-06-13-001140" src="https://app.image-maps.com/m/private/0/prfbklpfc72bo1hc85ekhka3tf_residensialoasis4.jpg" border="0" width="380" height="583" orgWidth="380" orgHeight="583" usemap="#image-maps-2022-06-13-001140" alt="" />
+      <map name="image-maps-2022-06-13-001140" id="ImageMapsCom-image-maps-2022-06-13-001140">
+        <area  alt="" title="acceso1" href="tel:+526251477133" shape="rect" coords="229,242,366,315" style="outline:none;" target="_self"     /><img id="Image-Maps-Com-image-maps-2022-06-13-001140" 
         src="ResidensialOasis4.jpg" 
         border="0" 
         width="380" 
@@ -9,8 +11,6 @@
         orgWidth="380" 
         orgHeight="583" 
         usemap="#image-maps-2022-06-13-001140" alt="" />
-      <map name="image-maps-2022-06-13-001140" id="ImageMapsCom-image-maps-2022-06-13-001140">
-        <area  alt="" title="acceso1" href="tel:+526251477133" shape="rect" coords="229,242,366,315" style="outline:none;" target="_self"     />
         <area  alt="" title="acceso2" href="tel:+526142175113" shape="rect" coords="229,329,366,402" style="outline:none;" target="_self"     />
         <area shape="rect" coords="378,581,380,583" alt="Image Map" style="outline:none;" title="Image Map" href="https://www.image-maps.com/" />
         <area  alt="" title="palapa1" @click="$refs.palapa.open('Palapa 1')" shape="poly" coords="46,548,56,547,60,540,62,532,57,526,55,522,53,520,48,520,41,525,42,531,39,537,39,543" style="outline:none;" target="_self"     />
