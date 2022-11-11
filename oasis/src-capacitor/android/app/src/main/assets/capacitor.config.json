@@ -5,6 +5,6 @@
 	"npmClient": "[object Object]",
 	"webDir": "www",
 	"server": {
-		"url": "http://192.168.1.67:8080"
+		"url": "https://oasis-app-u62q3.ondigitalocean.app/#/"
 	}
 }
