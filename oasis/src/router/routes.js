@@ -5,7 +5,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/index.vue') },
-      { path: 'palapas', component: () => import('pages/palapas.vue') },
+      { path: 'palapas', component: () => import('pages/index.vue') },
       { path: 'mensajes', component: () => import('pages/mensajes.vue') },
       { path: 'reglamento', component: () => import('pages/reglamento.vue') },
       { path: 'avisoprivacidad', component: () => import('pages/avisoprivacidad.vue') },

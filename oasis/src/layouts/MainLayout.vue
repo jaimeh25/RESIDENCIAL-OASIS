@@ -53,7 +53,7 @@ const linksList = [
     title: 'Palapas',
     caption: 'Apartar palapas',
     icon: 'deck',
-    link: '/'
+    link: '#/palapas/'
   },
   {
     title: 'Reglamento',
