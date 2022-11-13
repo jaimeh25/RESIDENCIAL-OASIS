@@ -2,6 +2,6 @@
   "appId": "org.capacitor.quasar.residencialoasis",
   "appName": "RESIDENCIAL OASIS",
   "bundledWebRuntime": false,
-  "npmClient": "[object Object]",
-  "webDir": "www"
+  "npmClient": "yarn",
+  "webDir": "https://oasis-app-u62q3.ondigitalocean.app/#/"
 }
