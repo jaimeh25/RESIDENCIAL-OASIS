@@ -41,6 +41,11 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/ios@^3.0.0-beta.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.9.0.tgz#5e31b88701fe355cacf0c9790b319731d8b85b04"
+  integrity sha512-GezPCJIujRHnF4wbrKJx6Q/mgFz0f9rmh/steTTXQZI+nEl6mHk6NWh8235p7YbhonYi5WD0rFNirrjGg1EaGw==
+
 "@capacitor/splash-screen@^1.0.0":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-1.2.2.tgz#fabd52ffbb922c38e2b3ef605332f29c830bd508"
